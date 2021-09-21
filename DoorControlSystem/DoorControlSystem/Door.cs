@@ -8,8 +8,12 @@ namespace DoorControlSystem
 {
     class Door:IDoor
     {
+        IDoorControl doorControl;
         private bool _isOpen { get; set; }
-        public Door() { }
+        public Door()
+        {
+            doorControl = new DoorControl();
+        }
 
         public void Open()
         {

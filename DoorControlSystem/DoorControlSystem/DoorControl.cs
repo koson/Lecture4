@@ -6,10 +6,15 @@ using System.Threading.Tasks;
 
 namespace DoorControlSystem
 {
-    class DoorControl
+    class DoorControl:IDoorControl
     {
         public DoorControl() { }
 
+
+    }
+
+    interface IDoorControl
+    {
 
     }
 }
