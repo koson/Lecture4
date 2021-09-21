@@ -9,7 +9,7 @@ namespace DoorControlSystem
     class Door:IDoor
     {
         IDoorControl doorControl;
-        private bool _isOpen { get; set; }
+        public bool _isOpen { get; private set; }
         public Door()
         {
             doorControl = new DoorControl();
@@ -35,9 +35,21 @@ namespace DoorControlSystem
             else
                 Console.WriteLine("Door is already closed?!?");
         }
-        public bool RunSelfTest()
+    }
+    class StubDoor:IDoor
+    {
+        public bool _isOpen { get; private set; }
+        public StubDoor()
         {
-            return true;
+
+        }
+        public void Open()
+        {
+            _isOpen = true;
+        }
+        public void Close()
+        {
+            _isOpen = false;
         }
     }
 
@@ -45,6 +57,5 @@ namespace DoorControlSystem
     {
         public void Open();
         public void Close();
-        public bool RunSelfTest();
     }
 }
