@@ -11,7 +11,7 @@ namespace DoorControl
         public bool isAlarmed { get; private set; } = false;
         public void RaiseAlarm()
         {
-            
+            this.isAlarmed = true;
         }
     }
 }
