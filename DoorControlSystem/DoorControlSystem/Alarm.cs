@@ -6,23 +6,36 @@ using System.Threading.Tasks;
 
 namespace DoorControlSystem
 {
-    class Alarm:IAlarm
+    public class Alarm:IAlarm
     {
+        public bool alarmSounding { get; private set; }
         public Alarm() { }
         
         public void RaiseAlarm()
         {
+            alarmSounding = true;
             Console.WriteLine("DINGELING ALARM IS GOING OFF!!!!!!");
-        }
-        public bool RunSelfTest()
-        {
-            return true;
         }
     }
 
-    interface IAlarm
+    public class FakeAlarm : IAlarm
+    {
+        public bool alarmSounding { get; private set; }
+        public FakeAlarm(bool alarm) 
+        {
+            alarmSounding = alarm;
+        }
+
+        public void RaiseAlarm()
+        {
+            alarmSounding = true;
+            Console.WriteLine("DINGELING ALARM IS GOING OFF!!!!!!");
+        }
+    }
+
+    public interface IAlarm
     {
         public void RaiseAlarm();
-        public bool RunSelfTest();
+        bool alarmSounding { get; set; }
     }
 }
