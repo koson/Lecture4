@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DoorControlSystem
 {
-    class Door:IDoor
+    public class Door:IDoor
     {
         IDoorControl doorControl;
         public bool _isOpen { get; private set; }
@@ -36,7 +36,7 @@ namespace DoorControlSystem
                 Console.WriteLine("Door is already closed?!?");
         }
     }
-    class StubDoor:IDoor
+    public class StubDoor:IDoor
     {
         public bool _isOpen { get; private set; }
         public StubDoor()
@@ -53,7 +53,7 @@ namespace DoorControlSystem
         }
     }
 
-    interface IDoor
+    public interface IDoor
     {
         public void Open();
         public void Close();
