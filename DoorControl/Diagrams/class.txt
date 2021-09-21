@@ -1,0 +1,86 @@
+@startuml
+
+interface IDoor {
++Open(): void
++Close(): void
+}
+
+interface IUserValidation {
++ValidateEntryRequest(id: int): bool
+}
+
+interface IEntryNotification {
++NotifyEntryGranted(id: int): void
++NotifyEntryDenied(id: int): void
+}
+
+interface IAlarm {
++RaiseAlarm(): void
+}
+
+enum DoorControlState {
+DoorClosed,
+DoorClosing,
+DoorOpen,
+DoorOpening,
+DoorBreached
+}
+
+class DoorControl {
+-doorControlState: DoorControlState { get; private set; }
+-door: IDoor
+-userValidation: IUserValidation
+-entryNotifcation: IEntryNotification
+-alarm: IAlarm
++DoorControl(door: IDoor, userValidation: IUserValidation, entryNotification: EntryNotification, alarm: IAlarm)
++RequestEntry(id: int): void
++DoorOpened(): void
++DoorClosed(): void
+}
+
+class Door {
+- doorControl: DoorControl
+}
+
+class UserValidation {
+- authorizedUserIds: List<int>
+}
+
+class EntryNotification {
+- records: Dictionary<int, string>
+}
+
+class Alarm {
+- isAlarmed: bool
+}
+
+class StubDoor {
+}
+
+class StubUserValidation {
+}
+
+class MockEntryNotification {
++ records: Dictionary<int, string>
+}
+
+class MockAlarm {
+- isAlarmed: bool
+}
+
+IDoor <|-- Door
+IDoor <|-- StubDoor
+IUserValidation <|-- UserValidation
+IUserValidation <|-- StubUserValidation
+IEntryNotification <|-- EntryNotification
+IEntryNotification <|-- MockEntryNotification
+IAlarm <|-- Alarm
+IAlarm <|-- MockAlarm
+
+DoorControl *-- DoorControlState
+DoorControl *-- IDoor
+DoorControl *-- IUserValidation
+DoorControl *-- IEntryNotification
+DoorControl *-- IAlarm
+
+@enduml

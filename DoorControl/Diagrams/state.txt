@@ -1,0 +1,13 @@
+@startuml
+hide empty description
+
+[*] --> DoorClosed
+DoorClosed --> DoorOpening
+DoorOpening --> DoorOpen
+DoorOpen --> DoorClosing
+DoorClosing --> DoorClosed
+DoorClosed --> DoorBreached
+DoorClosed --> [*]
+DoorBreached --> [*]
+
+@enduml
