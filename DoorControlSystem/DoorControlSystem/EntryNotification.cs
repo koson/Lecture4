@@ -8,5 +8,14 @@ namespace DoorControlSystem
 {
     class EntryNotification
     {
+        EntryNotification() { }
+        public void NotifyEntryGranted(int id)
+        {
+
+        }
+        public void NotifyEntryDenied(int id)
+        {
+
+        }
     }
 }

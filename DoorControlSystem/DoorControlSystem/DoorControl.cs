@@ -8,5 +8,8 @@ namespace DoorControlSystem
 {
     class DoorControl
     {
+        public DoorControl() { }
+
+
     }
 }
