@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace DoorControlSystem
 {
-    class UserValidation:IUserValidation
+    public class UserValidation:IUserValidation
     {
         public List<int> authorizedUserIds { get; private set; }
         public UserValidation()
         {
-
+            authorizedUserIds = new();
         }
         public bool ValidateEntryRequest(int id)
         {
@@ -47,9 +47,9 @@ namespace DoorControlSystem
         }
     }
 
-    class StubUserValidation:IUserValidation
+    public class StubUserValidation:IUserValidation
     {
-        public List<int> authorizedUserIds { get; private set; }
+        public List<int> authorizedUserIds { get; set; }
         public StubUserValidation(int id)
         {
             authorizedUserIds.Add(id);
@@ -88,7 +88,7 @@ namespace DoorControlSystem
         }
     }
 
-    interface IUserValidation
+    public interface IUserValidation
     {
         public bool ValidateEntryRequest(int id);
         public void WhitelistUserId(int id);

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DoorControlSystem
 {
-    class Alarm:IAlarm
+    public class Alarm:IAlarm
     {
         public Alarm() { }
         
@@ -20,7 +20,7 @@ namespace DoorControlSystem
         }
     }
 
-    interface IAlarm
+    public interface IAlarm
     {
         public void RaiseAlarm();
         public bool RunSelfTest();
